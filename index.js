@@ -1,66 +1,81 @@
+const inquierer = require("inquirer");
 const fs = require("fs");
-const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown.js");
-
+const readMe = require("./utils/generateMarkdown.js")
 
 // array of questions for user
 const questions = [
     {
-        type: "input",
-        message: "Project Title:",
+        type: "prompt",
+        message: "What is the title of your repository?",
         name: "title"
     },
     {
-        type: "input",
-        message: "Application Description:",
+        type: "prompt",
+        message: "How would you like to describe this project?",
         name: "description"
     },
     {
-        type: "input",
-        message: "Install Instructions:",
-        name: "install",
-        default: "npm i"
+        type: "prompt",
+        message: "Please provide installation instructions.",
+        name: "install"
     },
     {
-        type: "input",
-        message: "Usage:",
+        type: "prompt",
+        message: "Enter usage information.",
         name: "usage"
     },
     {
+        type: "prompt",
+        message: "Enter other contributers.",
+        name: "contribution"
+    },
+    {
+        type: "prompt",
+        message: "Enter test instructions.",
+        name: "test"
+    },
+    {
         type: "list",
-        message: "License Used:",
+        message: "Select a license(s).",
         name: "license",
-        choices: ["MIT", "APACHE", "GPL", "Affero GPL", "Artistic License 2.0", "Public Domain (unlicense)", "n/a"]
+        choices: [
+            "Apache",
+            "Boost",
+            "BSD",
+            "Mozilla",
+        ],
     },
     {
-        type: "input",
-        message: "Contributing:",
-        name: "contributing"
+        type: "prompt",
+        message: "Please provide your GitHub username.",
+        name: "username"
     },
     {
-        type: "input",
-        message: "Testing Instructions:",
-        name: "test",
-        default: "run 'npm test'"
-    },
-    {
-        type: "input",
-        message: "GitHub Username:",
-        name: "github"
-    },
-    {
-        type: "input",
-        message: "Email Address:",
+        type: "prompt",
+        message: "Enter email address.",
         name: "email"
-    }
+    },
+
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(fileName, answers) {
+    fs.writeFile(fileName , answers , function(err){
+        if(err){
+            throw err;
+        }
+    })
 }
 
 // function to initialize program
 function init() {
+    console.log("its starting")
+    inquierer
+        .prompt(questions)
+        .then(answers => {
+            const md = readMe(answers)
+            writeToFile(answers.title + "README.md", md)
+        })
 
 }
 
