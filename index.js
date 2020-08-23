@@ -59,7 +59,7 @@ function writeToFile(fileName, createFile) {
         if (err) {
             console.log(err);
         }
-        console.log("Your README has been created!");
+        console.log("Your README.md is created!");
     });
 }
 
