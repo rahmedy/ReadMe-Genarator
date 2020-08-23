@@ -66,9 +66,9 @@ function writeToFile(fileName, createFile) {
 // function to initialize program
 async function init() {
     try {
-        const getAnswers = await inquirer.prompt(questions);
-        const fileName = await getAnswers.title.toLowerCase().split(' ').join('') + "_README.md";
-        const createFile = await generateMarkdown(getAnswers);
+        const information = await inquirer.prompt(questions);
+        const fileName = await information.title.toLowerCase().split(' ').join('') + "_README.md";
+        const createFile = await generateMarkdown(information);
         const writefile = await writeToFile(fileName, createFile);
     } catch (error) {
 

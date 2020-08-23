@@ -1,15 +1,15 @@
 // function to generate markdown for README
-function generateMarkdown(getAnswers) {
+function generateMarkdown(information) {
 
-  // formatting the license string so it works in the badge link
-  const badge = getAnswers.license.split(' ').join('%20');
 
-  return `# ${getAnswers.title}
+  const badge = information.license.split(' ').join('%20');
+
+  return `# ${information.title}
       
     
 ![License](https://img.shields.io/badge/License-${badge}-blue.svg)
 ## Description
-${getAnswers.description}
+${information.description}
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
@@ -18,21 +18,22 @@ ${getAnswers.description}
 * [Tests](#tests)
 * [Questions](#questions)
 ## Installation
-To install necessary dependencies, run the following command:
-\`\`\` ${getAnswers.install} \`\`\`
-## Usage
-${getAnswers.use}
+To installrun the following command:
+\`\`\` ${information.install} \`\`\`
+## Use
+${information.use}
 ## License
-This project is licensed under the ${getAnswers.license} license.
-## Contribution Guidelines
-${getAnswers.contribution}
+This project is licensed under ${information.license} license.
+## Contribution 
+${information.contribution}
 ## Tests
-To run tests, run the following command:
-\`\`\` ${getAnswers.test} \`\`\`
+Run the following command:
+\`\`\` ${information.test} \`\`\`
 
 
-Contact ${getAnswers.email}
-GitHub account [https://github.com/${getAnswers.username}
+Contact ${information.email}
+##
+GitHub account:  https://github.com/${information.username}
 `;
 }
 
