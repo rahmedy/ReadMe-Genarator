@@ -3,3 +3,7 @@ One of the most important aspects of developing is having a good ReadMe. This to
 
 
 ![](demo.gif)
+
+
+Installation
+To installrun the following command: npm i
