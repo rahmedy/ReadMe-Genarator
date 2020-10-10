@@ -6,4 +6,4 @@ One of the most critical aspects of developing is having good ReadMe. This tool,
 
 Installation:
 
-To installrun the following command: npm i
+To install, run the following command: npm i
